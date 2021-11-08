@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Template</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            body {
+                background-color: black;
+            }
+            canvas {
+                padding: 0;
+                margin: auto;
+                display: block;
+                width: 640px;
+            }
+            p {
+                color: lightgray;
+            }
+        </style>
+
+        <p>Readme: If the white border around the game, press tab to regain focus.</p>
+        <canvas id="canvas" tabindex="0"></canvas>
+        <script src="$GODOT_URL"></script>
+        <script>
+            var engine = new Engine($GODOT_CONFIG);
+            engine.startGame();
+        </script>
+    </body>
+</html>

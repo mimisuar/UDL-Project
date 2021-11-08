@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://tile_controller.gd" type="Script" id=1]
+[ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
+[ext_resource path="res://sprites/player.png" type="Texture" id=3]
+[ext_resource path="res://player.gd" type="Script" id=4]
+[ext_resource path="res://gui_controller.gd" type="Script" id=5]
+[ext_resource path="res://sprites/action_icon_none.tres" type="Texture" id=6]
+[ext_resource path="res://sprites/action_icon_up.tres" type="Texture" id=7]
+[ext_resource path="res://sprites/action_icon_select.tres" type="Texture" id=8]
+[ext_resource path="res://sprites/action_icon_down.tres" type="Texture" id=9]
+[ext_resource path="res://sprites/action_icon_right.tres" type="Texture" id=10]
+[ext_resource path="res://sprites/action_icon_left.tres" type="Texture" id=11]
+
+[node name="Test" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Enemy" type="Sprite" parent="Camera2D"]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -120 )
+
+[node name="TileController" type="Node2D" parent="."]
+script = ExtResource( 1 )
+tile_rows = 3
+tile_cols = 4
+camera_path = NodePath("../Camera2D")
+
+[node name="Player" type="Sprite" parent="TileController"]
+z_index = 2
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gui" type="Control" parent="CanvasLayer"]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+player_path = NodePath("../../TileController/Player")
+left = ExtResource( 11 )
+right = ExtResource( 10 )
+up = ExtResource( 7 )
+down = ExtResource( 9 )
+select = ExtResource( 8 )
+none = ExtResource( 6 )
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Gui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 200.0
+margin_bottom = 56.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Gui/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 127.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Gui/PanelContainer/VBoxContainer"]
+margin_left = 45.0
+margin_right = 140.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+text = "Control mode: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Gui/PanelContainer/VBoxContainer"]
+margin_left = 78.0
+margin_top = 18.0
+margin_right = 107.0
+margin_bottom = 38.0
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="CanvasLayer/Gui/PanelContainer/VBoxContainer"]
+margin_left = 47.0
+margin_top = 42.0
+margin_right = 139.0
+margin_bottom = 56.0
+size_flags_horizontal = 4
+text = "Current Action"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Gui/PanelContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 186.0
+margin_bottom = 120.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Gui/PanelContainer/VBoxContainer/CenterContainer"]
+margin_left = 63.0
+margin_right = 123.0
+margin_bottom = 60.0
+texture = ExtResource( 8 )
+
+[connection signal="item_selected" from="CanvasLayer/Gui/PanelContainer/VBoxContainer/OptionButton" to="CanvasLayer/Gui" method="_on_OptionButton_item_selected"]
