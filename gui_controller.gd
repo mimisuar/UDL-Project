@@ -32,7 +32,8 @@ func _gen_dict() -> Dictionary:
 	"p_up": null,
 	"p_down": null,
 	"p_select": null,
-	"p_all": null
+	"p_all": null,
+	"p_click": null
 	}
 
 var input_events_wasd := _gen_dict()
@@ -67,7 +68,11 @@ func _ready():
 	input_events_wasd["p_select"] = tmp
 	input_events_space["p_all"] = tmp
 	
-	_options.select(1)
+	tmp = InputEventMouseButton.new()
+	tmp.button_index = BUTTON_LEFT
+	input_events_mouse["p_click"] = tmp
+	
+	_options.select(2)
 	update_current_item()
 	
 func _process(dt: float):
