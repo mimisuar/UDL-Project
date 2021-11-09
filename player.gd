@@ -38,7 +38,7 @@ func _process(dt: float):
 	if Input.is_action_just_pressed("p_click"):
 		var act = mouse_control()
 		if act:
-			print(act)
+			Input.action_press(act)
 		
 	if Input.is_action_just_pressed("p_right"):
 		_x += 1
@@ -67,6 +67,7 @@ func _in_range(x, x_min, x_max) -> bool:
 	
 func mouse_control():
 	var mpos = get_global_mouse_position()
+	mpos = to_local(mpos)
 	if mpos.length() < 30:
 		return "p_select"
 	
