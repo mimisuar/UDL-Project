@@ -24,12 +24,15 @@ func _process(dt: float):
 		
 	if Input.is_action_just_pressed("p_all"):
 		_holding = true
-		_hold_time = 0.0
 	elif Input.is_action_just_released("p_all"):
 		_holding = false
 		var p_time = parse_hold_time()
 		if p_time != null:
 			Input.action_press(p_time)
+			
+		# snap time to the last 0.5 second interval
+		_hold_time = floor(_hold_time * 2) / 2
+		
 	if _holding:
 		_hold_time += dt
 		if _hold_time > max_time:
