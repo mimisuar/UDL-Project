@@ -1,3 +1,6 @@
+signal tiles_loaded
+signal answer_right
+signal answer_wrong
 class_name TileController
 extends Node2D
 
@@ -9,9 +12,12 @@ export(NodePath) var camera_path
 var _tiles := []
 
 var tiles_rect := Rect2()
+var _rtg := false
+var _answers := []
 #onready var _init_pos: Position2D = get_node("InitialPosition")
 
 var _tile_text = preload("res://sprites/tile.png")
+var _tile = preload("res://tile.tscn")
 
 func _calc_bounds():
 	var size = _tile_text.get_size()
@@ -33,9 +39,8 @@ func _ready():
 	
 	for row in range(tile_rows):
 		for col in range(tile_cols):
-			var tmp_tile = Sprite.new()
-			tmp_tile.texture = _tile_text
-			tmp_tile.position = Vector2(x_pos, y_pos)
+			var tmp_tile = _tile.instance()
+			tmp_tile.rect_position = Vector2(x_pos, y_pos) - _tile_text.get_size() / 2
 			_tiles.append(tmp_tile)
 			add_child(tmp_tile)
 			
@@ -43,6 +48,8 @@ func _ready():
 		y_pos += _tile_text.get_height() + margin
 		x_pos = 0
 	$Player.start()
+	emit_signal("tiles_loaded")
+	_rtg = true
 	
 func get_tile_by_pos(x: int, y: int):
 	if x >= 0 and x < tile_cols and y >= 0 and y < tile_rows:
@@ -64,3 +71,26 @@ func wrap_y(y: int):
 	elif y >= tile_rows:
 		return 0
 	return y
+
+func _on_Enemy_answers_generated(answers: Array):
+	var answers2 := answers.duplicate()
+	answers2.shuffle()
+	
+	if not _rtg:
+		yield(self, "tiles_loaded")
+	var minimum = min(answers2.size(), _tiles.size())
+	for i in minimum:
+		_tiles[i].set_label(str(answers2[i]))
+	_answers = answers
+
+
+func _on_Player_selected(x, y):
+	var tile: Tile = get_tile_by_pos(x, y)
+	var _text = tile.get_label()
+	var test = int(_text)
+	if test == _answers[0]:
+		print("RIGHT!")
+		emit_signal("answer_right")
+	else:
+		print("lol git gud scrub")
+		emit_signal("answer_wrong")

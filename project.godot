@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureRect",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://tile.gd"
+}, {
 "base": "Node2D",
 "class": "TileController",
 "language": "GDScript",
 "path": "res://tile_controller.gd"
 } ]
 _global_script_class_icons={
+"Tile": "",
 "TileController": ""
 }
 

@@ -1,3 +1,4 @@
+signal selected(x, y)
 extends Sprite
 
 var _x := 0
@@ -52,10 +53,11 @@ func _process(dt: float):
 	elif Input.is_action_just_pressed("p_up"):
 		_y -= 1
 		
-	
-		
 	_x = _tc.wrap_x(_x)
 	_y = _tc.wrap_y(_y)
+	
+	if Input.is_action_just_pressed("p_select"):
+		emit_signal("selected", _x, _y)
 	
 	start()
 	
@@ -89,4 +91,8 @@ func mouse_control():
 func start():
 	var tile = _tc.get_tile_by_pos(_x, _y)
 	if tile != null:
-		position = tile.position
+		position = tile.rect_position + Vector2(32, 32)
+
+
+func _on_TileController_answer_wrong():
+	$AnimationPlayer.play("hurt (copy)")
