@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "KanjiData",
+"language": "GDScript",
+"path": "res://kanji/kanji_data.gd"
+}, {
+"base": "Node",
+"class": "TextToSpeech",
+"language": "GDScript",
+"path": "res://addons/godot-tts/TTS.gd"
+}, {
 "base": "TextureRect",
 "class": "Tile",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://tile_controller.gd"
 } ]
 _global_script_class_icons={
+"KanjiData": "",
+"TextToSpeech": "",
 "Tile": "",
 "TileController": ""
 }

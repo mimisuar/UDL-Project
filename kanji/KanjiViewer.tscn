@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://kanji/chapter18/KanjiTarget.tscn" type="PackedScene" id=1]
+[ext_resource path="res://kanji/chapter18/KanjiEye.tscn" type="PackedScene" id=2]
+[ext_resource path="res://kanji/tts_test.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="KanjiTarget" parent="." instance=ExtResource( 1 )]
+position = Vector2( 743, 325 )
+do_slow_show = true
+
+[node name="KanjiEye" parent="." instance=ExtResource( 2 )]
+position = Vector2( 26, 0 )
+do_slow_show = true
