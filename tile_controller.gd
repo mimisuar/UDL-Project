@@ -80,17 +80,9 @@ func _on_Enemy_answers_generated(answers: Array):
 		yield(self, "tiles_loaded")
 	var minimum = min(answers2.size(), _tiles.size())
 	for i in minimum:
-		_tiles[i].set_label(str(answers2[i]))
+		pass
 	_answers = answers
 
 
 func _on_Player_selected(x, y):
 	var tile: Tile = get_tile_by_pos(x, y)
-	var _text = tile.get_label()
-	var test = int(_text)
-	if test == _answers[0]:
-		print("RIGHT!")
-		emit_signal("answer_right")
-	else:
-		print("lol git gud scrub")
-		emit_signal("answer_wrong")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://tile_controller.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://enemy.gd" type="Script" id=12]
 [ext_resource path="res://game_controller.gd" type="Script" id=13]
 [ext_resource path="res://hurt_player.tres" type="Animation" id=14]
-[ext_resource path="res://tts_test.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hurt2"
@@ -97,7 +96,6 @@ tile_cols = 3
 camera_path = NodePath("../Camera2D")
 
 [node name="Player" type="Sprite" parent="TileController"]
-modulate = Color( 1, 1, 1, 0.560784 )
 z_index = 2
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
@@ -174,9 +172,6 @@ margin_left = 63.0
 margin_right = 123.0
 margin_bottom = 60.0
 texture = ExtResource( 8 )
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource( 15 )
 
 [connection signal="answers_generated" from="Camera2D/Enemy" to="TileController" method="_on_Enemy_answers_generated"]
 [connection signal="answer_right" from="TileController" to="Camera2D/Enemy" method="_on_TileController_answer_right"]
