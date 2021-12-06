@@ -1,4 +1,5 @@
 signal selected(x, y)
+signal moved(x, y)
 extends Sprite
 
 var _x := 0
@@ -21,7 +22,7 @@ func _ready():
 	pass
 
 func _process(dt: float):
-	
+	var moved := false
 		
 	if Input.is_action_just_pressed("p_all"):
 		_holding = true
@@ -46,15 +47,21 @@ func _process(dt: float):
 		
 	if Input.is_action_just_pressed("p_right"):
 		_x += 1
+		moved = true
 	elif Input.is_action_just_pressed("p_left"):
 		_x -= 1
+		moved = true
 	elif Input.is_action_just_pressed("p_down"):
 		_y += 1
+		moved = true
 	elif Input.is_action_just_pressed("p_up"):
 		_y -= 1
+		moved = true
 		
 	_x = _tc.wrap_x(_x)
 	_y = _tc.wrap_y(_y)
+	if moved:
+		emit_signal("moved", _x, _y)
 	
 	if Input.is_action_just_pressed("p_select"):
 		emit_signal("selected", _x, _y)

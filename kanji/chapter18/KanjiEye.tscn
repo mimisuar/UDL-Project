@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://kanji/kanji.gd" type="Script" id=1]
-[ext_resource path="res://kanji/chapter18/kanji_eye.tres" type="Resource" id=2]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -10,32 +9,26 @@ _data = {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 20, 8, 0, 0, 0, 0, 48, 8 )
+"points": PoolVector2Array( 0, 0, 0, 0, 20, 8, 0, 0, 0, 0, 48, 8, 0, 0, 0, 0, 48, 55 )
 }
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 48, 8, 0, 0, 0, 0, 48, 56 )
+"points": PoolVector2Array( 0, 0, 0, 0, 20, 20, 0, 0, 0, 0, 48, 20 )
 }
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 20, 20, 0, 0, 0, 0, 48, 20 )
+"points": PoolVector2Array( 0, 0, 0, 0, 20, 37, 0, 0, 0, 0, 47, 37 )
 }
 
 [sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 20, 40, 0, 0, 0, 0, 48, 40 )
-}
-
-[sub_resource type="Curve2D" id=6]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 20, 56, 0, 0, 0, 0, 48, 56 )
+"points": PoolVector2Array( 0, 0, 0, 0, 20, 55, 0, 0, 0, 0, 48, 55 )
 }
 
 [node name="KanjiEye" type="Node2D"]
 script = ExtResource( 1 )
-kanji_data = ExtResource( 2 )
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -51,6 +44,3 @@ curve = SubResource( 4 )
 
 [node name="Path2D5" type="Path2D" parent="."]
 curve = SubResource( 5 )
-
-[node name="Path2D6" type="Path2D" parent="."]
-curve = SubResource( 6 )

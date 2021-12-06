@@ -4,7 +4,6 @@ var _strokes := []
 var _lines_max := -1 # max number of lines to draw
 var point_count = 0
 
-export(Resource) var kanji_data
 export var do_slow_show = false
 export(float, 0.01, 1) var slow_show_time = 0.01
 
@@ -53,8 +52,8 @@ func _draw():
 				return
 			
 			
-			var p0 = to_global(points[i])
-			var p1 = to_global(points[i + 1])
+			var p0 = points[i]
+			var p1 = points[i + 1]
 			
 			draw_line(p0, p1, Color.black, 2)
 			lines_drawn += 1
