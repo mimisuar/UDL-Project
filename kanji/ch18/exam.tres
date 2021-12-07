@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://kanji/kanji_data.gd" type="Script" id=1]
+[ext_resource path="res://sprites/kanji/ch18/exam.tres" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+texture_rect = ExtResource( 2 )
+readout = "しけん"
+meaning = "exam"

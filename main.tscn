@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://tile_controller.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
@@ -14,10 +14,15 @@
 [ext_resource path="res://enemy.gd" type="Script" id=12]
 [ext_resource path="res://game_controller.gd" type="Script" id=13]
 [ext_resource path="res://hurt_player.tres" type="Animation" id=14]
-[ext_resource path="res://kanji/chapter18/kanji_end.tres" type="Resource" id=15]
-[ext_resource path="res://kanji/chapter18/kanji_eye.tres" type="Resource" id=16]
-[ext_resource path="res://kanji/chapter18/kanji_target.tres" type="Resource" id=17]
-[ext_resource path="res://kanji/chapter18/kanji_lend.tres" type="Resource" id=18]
+[ext_resource path="res://kanji/ch18/music.tres" type="Resource" id=15]
+[ext_resource path="res://kanji/ch18/eye.tres" type="Resource" id=16]
+[ext_resource path="res://kanji/ch18/purpose.tres" type="Resource" id=17]
+[ext_resource path="res://kanji/ch18/library.tres" type="Resource" id=18]
+[ext_resource path="res://kanji/ch18/clothes.tres" type="Resource" id=19]
+[ext_resource path="res://kanji/ch18/map.tres" type="Resource" id=20]
+[ext_resource path="res://kanji/ch18/to lend.tres" type="Resource" id=21]
+[ext_resource path="res://kanji/ch18/to attempt.tres" type="Resource" id=22]
+[ext_resource path="res://kanji/ch18/exam.tres" type="Resource" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hurt2"
@@ -61,7 +66,7 @@ position = Vector2( 0, -145 )
 texture = ExtResource( 2 )
 script = ExtResource( 12 )
 tile_c_path = NodePath("../../TileController")
-kanji = [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 17 ) ]
+kanji = [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 21 ) ]
 
 [node name="PanelContainer2" type="PanelContainer" parent="Camera2D/Enemy"]
 anchor_left = 0.5

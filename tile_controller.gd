@@ -93,6 +93,8 @@ func _on_Enemy_answers_generated(answers: Array):
 func _on_Player_selected(x, y):
 	var tile: Tile = get_tile_by_pos(x, y)
 	var kanji := tile.get_kanji()
+	if kanji == null:
+		return
 	if kanji.meaning == _answers[0].meaning:
 		emit_signal("answer_right")
 	else:
@@ -101,5 +103,8 @@ func _on_Player_selected(x, y):
 
 func _on_Player_moved(x, y):
 	var tile: Tile = get_tile_by_pos(x, y)
+	var kanji = tile.get_kanji()
+	if kanji == null:
+		return
 	
-	_tts.speak(tile.get_kanji().readout, "ja-JP")
+	_tts.speak(kanji.readout, "ja-JP")

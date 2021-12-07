@@ -1,16 +1,12 @@
 class_name Tile
 extends TextureRect
 
-var _ckanji: Node2D = null
 var _kanji: KanjiData = null
+onready var _subrect := get_node("TextureRect")
 
 func attach_kanji(kj: KanjiData):
-	if _ckanji != null:
-		remove_child(_ckanji)
-	
 	_kanji = kj
-	_ckanji = kj.kanji_sprite.instance()
-	add_child(_ckanji)
+	_subrect.texture = _kanji.texture_rect
 
 func get_kanji() -> KanjiData:
 	return _kanji

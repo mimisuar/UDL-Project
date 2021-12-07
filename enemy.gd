@@ -9,6 +9,8 @@ var rng: RandomNumberGenerator = null
 var _tc: TileController = null
 
 func random_pick_kanji(list: Array) -> KanjiData:
+	if list.size() == 0:
+		return null
 	var i = rng.randi_range(0, list.size() - 1)
 	return list[i] as KanjiData
 
@@ -21,6 +23,9 @@ func _ready():
 func generate_question():
 	
 	var correctk = random_pick_kanji(kanji)
+	if correctk == null:
+		return
+	
 	var correct = [ correctk ]
 	correct.append_array((generate_wrong_answers(correctk)))
 	label.text = correctk.meaning
@@ -31,6 +36,9 @@ func generate_wrong_answers(correct: KanjiData) -> Array:
 	var tmp = []
 	while tmp.size() + 1 < tcount:
 		var rand := random_pick_kanji(kanji)
+		if rand == null:
+			return []
+		
 		if rand.meaning == correct.meaning:
 			continue
 		
